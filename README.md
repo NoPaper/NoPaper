@@ -6,9 +6,13 @@ NoPaper의 API 서버와 안드로이드 앱이 포함됨
 
 ## Team
 기획, Technical Leading : 대덕SW마이스터고등학교 2학년 조민규
+
 PM : 대구SW고등학교 1학년 배준재
+
 QA : 대덕SW마이스터고등학교 1학년 차민지
+
 Designer : 광주SW마이스터고등학교 1학년 신소휘
+
 Researcher : 대구SW고등학교 2학년 손제욱
 
 ## Developers
