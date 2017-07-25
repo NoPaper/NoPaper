@@ -17,6 +17,7 @@ Researcher : 대구SW고등학교 2학년 손제욱
 
 ## Developers
 대덕SW마이스터고등학교 2학년 조민규 : GUI App, Android App, DataBase
+
 대덕SW마이스터고등학교 2학년 조치원 : API Server
 
 ## Technical Stacks
