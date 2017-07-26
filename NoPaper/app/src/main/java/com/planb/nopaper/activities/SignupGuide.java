@@ -5,10 +5,14 @@ import android.os.Bundle;
 import com.planb.nopaper.R;
 import com.planb.nopaper.activities.base.BaseActivity;
 
-public class MainActivity extends BaseActivity {
+/**
+ * Created by dsm2016 on 2017-07-26.
+ */
+
+public class SignupGuide extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_signup_guide);
     }
 }
