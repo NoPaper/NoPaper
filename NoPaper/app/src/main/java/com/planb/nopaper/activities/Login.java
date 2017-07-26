@@ -72,6 +72,7 @@ public class Login extends BaseActivity {
                                 successDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        sweetAlertDialog.dismissWithAnimation();
                                         startActivity(new Intent(getApplicationContext(), MainActivity_Student.class));
                                     }
                                 });
@@ -83,6 +84,7 @@ public class Login extends BaseActivity {
                                 successDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        sweetAlertDialog.dismissWithAnimation();
                                         startActivity(new Intent(getApplicationContext(), MainActivity_Student.class));
                                     }
                                 });

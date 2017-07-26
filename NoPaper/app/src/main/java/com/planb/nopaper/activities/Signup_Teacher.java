@@ -77,6 +77,7 @@ public class Signup_Teacher extends BaseActivity {
                                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                             @Override
                                             public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                sweetAlertDialog.dismissWithAnimation();
                                                 startActivity(new Intent(getApplicationContext(), Login.class));
                                             }
                                         }).show();
