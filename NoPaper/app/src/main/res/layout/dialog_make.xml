@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
+    android:layout_gravity="center">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="새로운 파일 보내기"
+        android:layout_marginTop="20dp"/>
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="220dp"
+        android:layout_height="30dp"
+        android:background="@drawable/selector_square"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:hint="파일의 제목을 입력하세요"
+        android:textSize="14sp"
+        android:gravity="center"/>
+
+    <ImageButton
+        android:id="@+id/fileBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/title"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_file"
+        android:scaleType="centerInside"
+        android:background="@android:color/transparent"/>
+
+    <TextView
+        android:id="@+id/fileSelectGuideView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fileBtn"
+        android:layout_centerHorizontal="true"
+        android:text="전송할 파일을 선택해 주세요"/>
+
+    <EditText
+        android:id="@+id/target"
+        android:layout_width="220dp"
+        android:layout_height="30dp"
+        android:background="@drawable/selector_square"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/fileSelectGuideView"
+        android:layout_marginTop="20dp"
+        android:hint="파일 수신자를 정해 주세요(1-1 등)"
+        android:textSize="14sp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:background="@color/blue_btn_bg_color"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="5dp"
+        android:text="확인"/>
+
+    <Button
+        android:id="@+id/cancelBtn"
+        android:background="#a0a0a0"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="5dp"
+        android:text="취소"/>
+
+</RelativeLayout>

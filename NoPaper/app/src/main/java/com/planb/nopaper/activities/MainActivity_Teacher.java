@@ -1,11 +1,14 @@
 package com.planb.nopaper.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
@@ -13,9 +16,9 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.planb.nopaper.R;
 import com.planb.nopaper.activities.base.BaseActivity;
+import com.planb.nopaper.dialogs.Make;
 import com.planb.nopaper.support.account.AccountManager;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,6 +28,7 @@ import org.json.JSONObject;
 
 public class MainActivity_Teacher extends BaseActivity {
     private RecyclerView recyclerView;
+    private ImageView fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +40,25 @@ public class MainActivity_Teacher extends BaseActivity {
 //        AccountManager.addWishList(getApplicationContext(), "path3");
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        String[] idList = AccountManager.getWishList(getApplicationContext());
-        System.out.println(idList);
+        fab = (ImageView) findViewById(R.id.fab);
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Make dialog = new Make(MainActivity_Teacher.this);
+                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        String[] idList = AccountManager.getWishList(getApplicationContext());
+                        recyclerView.setAdapter(new Adapter_Teacher(idList, getApplicationContext()));
+                    }
+                });
+
+                dialog.show();
+            }
+        });
+
+        String[] idList = AccountManager.getWishList(getApplicationContext());
         recyclerView.setAdapter(new Adapter_Teacher(idList, getApplicationContext()));
     }
 }
