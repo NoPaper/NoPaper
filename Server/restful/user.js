@@ -6,6 +6,9 @@ router.route('').post((req, res) => {
 
 });
 
+/**
+ * 선생님과 학생에 대한 각각의 로그인 라우팅
+ */
 router.route('/login/teacher').post((req, res) => {
     // DB에 쿼리 날려서 로우 뜨면 성공(고유 키 포함)
     const id = req.body.id;
@@ -33,6 +36,9 @@ router.route('/login/student').post((req, res) => {
     });
 });
 
+/**
+ * 선생님과 학생에 대해서 각각의 회원 가입 구현
+ */
 router.route('/signup/teacher').post((req, res) => {
     // DB에 쿼리 날려서 로우가 없다면 성공
     const id = req.body.id;
@@ -60,7 +66,7 @@ router.route('/signup/teacher').post((req, res) => {
     });
 });
 router.route('/signup/student').post((req, res) => {
-    // DB에 쿼리 날려서 로우가 없다면
+    // DB에 쿼리 날려서 로우가 없다면 성공
     const id = req.body.id;
     const password = req.body.password;
     const name = req.body.name;
