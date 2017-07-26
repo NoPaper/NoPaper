@@ -12,7 +12,6 @@ app.use(session({
 }));
 
 app.use('/', require('./restful/sample.js'));
-require('./support/mysql');
 
 app.listen(3003, () => {
     console.log('Server is listening on 3003');
