@@ -18,10 +18,12 @@
             android:layout_height="0dp"
             android:gravity="center"
             android:text="LOG-IN"
+            android:textColor="#868686"
             sl:scale_top="400"
             sl:scale_width="1000" />
 
         <EditText
+            android:id="@+id/id"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
@@ -33,25 +35,41 @@
             sl:scale_width="700" />
 
         <EditText
+            android:id="@+id/pw"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/selector_square"
             android:gravity="center"
             android:hint="PASSWORD"
+            android:inputType="textPassword"
             sl:scale_textsize="36"
             sl:scale_top="800"
             sl:scale_width="700" />
 
         <Button
+            android:id="@+id/signinBtn"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:text="LOG-IN"
             sl:scale_height="130"
-            sl:scale_textsize="40"
+            sl:scale_textsize="42"
             sl:scale_top="1000"
+            sl:scale_width="400" />
+
+        <TextView
+            android:id="@+id/jumpToSignupView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="회원이 아니신가요? 회원가입"
+            android:textColor="#969696"
+            sl:scale_height="70"
+            sl:scale_textsize="34"
+            sl:scale_top="1150"
             sl:scale_width="400" />
     </com.ssomai.android.scalablelayout.ScalableLayout>
 </LinearLayout>
