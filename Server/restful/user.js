@@ -24,7 +24,7 @@ router.route('/login/student').post((req, res) => {
     const id = req.body.id;
     const password = req.body.password;
 
-    mysql.query(`SELECT * FROM account_stduent WHERE id='${id}' AND password='${password}'`, (err, rows) => {
+    mysql.query(`SELECT * FROM account_student WHERE id='${id}' AND password='${password}'`, (err, rows) => {
         if (rows.length != 0) {
             res.sendStatus(200);
         } else {
@@ -39,8 +39,8 @@ router.route('/signup/teacher').post((req, res) => {
     const password = req.body.password;
     const key = req.body.key;
 
-    mysql.query(`SELECT * FROM teacher_secret WHERE key='${key}'`, (err, rows) => {
-        if (rows.length != 0) {
+    mysql.query(`SELECT * FROM teacher_secret WHERE secret='${key}'`, (err, rows) => {
+        if (rows.length == 0) {
             res.sendStatus(203);
         } else {
             mysql.query(`SELECT * FROM account_teacher WHERE id='${id}'`, (err, rows) => {
