@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: nopaper
+-- Host: localhost    Database: nopaper-hotfix
 -- ------------------------------------------------------
 -- Server version	5.7.17-log
 
@@ -24,9 +24,9 @@ DROP TABLE IF EXISTS `account_student`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `account_student` (
   `id` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `grade` int(1) NOT NULL,
-  `class` int(1) NOT NULL,
+  `pw` varchar(255) NOT NULL,
+  `number` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -40,7 +40,7 @@ DROP TABLE IF EXISTS `account_teacher`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `account_teacher` (
   `id` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `pw` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -54,19 +54,38 @@ DROP TABLE IF EXISTS `file_manager`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `file_manager` (
   `id` varchar(255) NOT NULL,
-  `file_path` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  `sender_id` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `teacher_secret`
+-- Table structure for table `meal`
 --
 
-DROP TABLE IF EXISTS `teacher_secret`;
+DROP TABLE IF EXISTS `meal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `teacher_secret` (
+CREATE TABLE `meal` (
+  `date` date NOT NULL,
+  `breakfast` varchar(255) NOT NULL,
+  `lunch` varchar(255) NOT NULL,
+  `dinner` varchar(255) NOT NULL,
+  PRIMARY KEY (`date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `secret_keys`
+--
+
+DROP TABLE IF EXISTS `secret_keys`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `secret_keys` (
   `secret` varchar(255) NOT NULL,
   PRIMARY KEY (`secret`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -81,4 +100,4 @@ CREATE TABLE `teacher_secret` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-26 11:33:48
+-- Dump completed on 2017-07-26 17:23:17
