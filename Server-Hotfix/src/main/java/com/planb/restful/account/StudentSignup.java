@@ -1,10 +1,8 @@
-package com.planb.restful;
+package com.planb.restful.account;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.planb.support.routing.API;
-import com.planb.support.routing.REST;
 import com.planb.support.routing.Route;
 import com.planb.support.utilities.MySQL;
 
@@ -12,10 +10,8 @@ import io.vertx.core.Handler;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.ext.web.RoutingContext;
 
-@Route(uri = "/auth/signin", method = HttpMethod.POST)
-@API(functionCategory = "계정", summary = "로그인")
-@REST(requestBody = "id: String, pw: String", successCode = 201, failureCode = 204, etc = "로그인 실패 시 204")
-public class Signin implements Handler<RoutingContext> {
+@Route(uri = "/signup/student", method = HttpMethod.POST)
+public class StudentSignup implements Handler<RoutingContext> {
 	@Override
 	public void handle(RoutingContext ctx) {
 		String id = ctx.request().getFormAttribute("id");

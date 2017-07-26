@@ -1,4 +1,4 @@
-package com.planb.restful;
+package com.planb.restful.school;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

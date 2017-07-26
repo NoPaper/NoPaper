@@ -16,45 +16,37 @@ public class Parser extends Thread {
 			Calendar cal = Calendar.getInstance();
 			
 			try {
-				int year = cal.get(Calendar.YEAR);
-				int month = cal.get(Calendar.MONTH) + 1;
+				int curYear = cal.get(Calendar.YEAR);
+				int curMonth = cal.get(Calendar.MONTH) + 1;
 				
 				School api = new School(School.Type.HIGH, School.Region.DAEJEON, "G100000170");
-				List<SchoolMenu> menus = api.getMonthlyMenu(year, month);
+				List<SchoolMenu> menus = api.getMonthlyMenu(curYear, curMonth);
 				
 				int maxDate = cal.getActualMaximum(Calendar.DATE);
 				
 				for(int i = 0; i < maxDate; i++) {
+					// 1일부터 끝까지
 					SchoolMenu dayMenu = menus.get(i);
 					JSONArray[] menuArray = new JSONArray[3];
-					JSONArray[] likeArray = new JSONArray[3];
 					
 					String[] meals = new String[3];
-					int[] mealsCount = new int[3];
 					
 					meals[0] = dayMenu.breakfast;
 					meals[1] = dayMenu.lunch;
 					meals[2] = dayMenu.dinner;
-					System.out.println(meals[0]);
 					
 					for(int j = 0; j < 3; j++) {
 						menuArray[j] = new JSONArray();
-						likeArray[j] = new JSONArray();
 						
 						for(String time: meals[j].split("\n")) {
 							String menu = time.split("\\*")[0];
 							menuArray[j].put(menu);
-							mealsCount[j]++;
-						}
-						
-						for(int k = 0; k < mealsCount[j]; k++) {
-							likeArray[j].put(0);
 						}
 					}
 					
-					String today = String.format("%04d-%02d-%02d", year, month, i + 1);
+					String today = String.format("%04d-%02d-%02d", curYear, curMonth, i + 1);
 					MySQL.executeUpdate("DELETE FROM meal WHERE date=?", today);
-					MySQL.executeUpdate("INSERT INTO meal(date, breakfast, breakfast_like, lunch, lunch_like, dinner, dinner_like) VALUES(?, ?, ?, ?, ?, ?, ?)", today, menuArray[0].toString(), likeArray[0].toString(), menuArray[1].toString(), likeArray[1].toString(), menuArray[2].toString(), likeArray[2].toString());
+					MySQL.executeUpdate("INSERT INTO meal(date, breakfast, lunch, dinner) VALUES(?, ?, ?, ?)", today, menuArray[0].toString(), menuArray[1].toString(), menuArray[2].toString());
 				}
 				
 				Thread.sleep(1000 * 3600 * 24);
