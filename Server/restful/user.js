@@ -66,11 +66,11 @@ router.route('/signup/student').post((req, res) => {
     const grade = req.body.grade
     const classs = req.body.class
 
-    mysql.query(`SELECT ${id} FROM account_student`, (err, rows) => {
+    mysql.query(`SELECT * FROM account_student WHERE id='${id}`, (err, rows) => {
         if (rows.length != 0) {
             res.sendStatus(204)
         } else {
-            mysql.query(`INSERT INTO account_teacher VALUES(${id}, ${password}, ${grade}, ${classs})`, (err, rows) => {
+            mysql.query(`INSERT INTO account_teacher VALUES('${id}', '${password}', '${grade}', '${classs}')`, (err, rows) => {
                 if (err) {
                     console.log(err);
                     res.sendStatus(204)
