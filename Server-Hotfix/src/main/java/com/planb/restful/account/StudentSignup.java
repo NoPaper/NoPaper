@@ -16,10 +16,13 @@ public class StudentSignup implements Handler<RoutingContext> {
 	public void handle(RoutingContext ctx) {
 		String id = ctx.request().getFormAttribute("id");
 		String pw = ctx.request().getFormAttribute("pw");
+		String number = ctx.request().getFormAttribute("number");
+		String name = ctx.request().getFormAttribute("name");
 		
-		ResultSet rs = MySQL.executeQuery("SELECT * FROM account WHERE id=? AND pw=?", id, pw);
+		ResultSet rs = MySQL.executeQuery("SELECT * FROM account_student WHERE id=?", id);
 		try {
 			if(rs.next()) {
+				MySQL.executeQuery("INSERT INTO account_student VALUES(?, ?, ?, ?)", id, pw, number, name);
 				ctx.response().setStatusCode(201).end();
 				ctx.response().close();
 			} else {

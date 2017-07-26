@@ -16,18 +16,26 @@ public class TeacherSignup implements Handler<RoutingContext> {
 	public void handle(RoutingContext ctx) {
 		String id = ctx.request().getFormAttribute("id");
 		String pw = ctx.request().getFormAttribute("pw");
-		
-		ResultSet rs = MySQL.executeQuery("SELECT * FROM account WHERE id=? AND pw=?", id, pw);
+		String secret = ctx.request().getFormAttribute("secret");
+
+		ResultSet rs;
 		try {
-			if(rs.next()) {
-				ctx.response().setStatusCode(204).end();
-				ctx.response().close();
-			} else {
-				MySQL.executeUpdate("INSERT INTO account VALUES(?, ?)", id, pw);
-				ctx.response().setStatusCode(201).end();
+			rs = MySQL.executeQuery("SELECT * FROM secret_keys WHERE secret=?", secret);
+			if(!rs.next()) {
+				ctx.response().setStatusCode(100).end();
 				ctx.response().close();
 			}
-		} catch (SQLException e) {
+
+			rs = MySQL.executeQuery("SELECT * FROM account_teacher WHERE id=?", id);
+			if(rs.next()) {
+				MySQL.executeQuery("INSERT INTO account_teacher VALUES(?, ?)", id, pw);
+				ctx.response().setStatusCode(201).end();
+				ctx.response().close();
+			} else {
+				ctx.response().setStatusCode(204).end();
+				ctx.response().close();
+			}
+		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
