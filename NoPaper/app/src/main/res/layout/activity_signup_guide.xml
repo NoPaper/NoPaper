@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="40dp"
-                android:background=""
+                android:background="#00000000"
                 android:scaleType="centerInside"
                 android:src="@drawable/student" />
 
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="10dp"
-                android:background=""
+                android:background="#00000000"
                 android:scaleType="centerInside"
                 android:src="@drawable/teacher" />
 

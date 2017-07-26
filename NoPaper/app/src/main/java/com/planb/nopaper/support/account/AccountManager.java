@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
+import com.androidquery.AQuery;
 import com.planb.nopaper.support.database.DBHelper;
 
 /**
@@ -12,12 +13,12 @@ import com.planb.nopaper.support.database.DBHelper;
  */
 
 public class AccountManager {
-    private static SQLiteDatabase getReadableDatabase(Context context) {
+    public static SQLiteDatabase getReadableDatabase(Context context) {
         DBHelper helper = DBHelper.getInstance(context, "check.db", null, 1);
         return helper.getReadableDatabase();
     }
 
-    private static SQLiteDatabase getWritableDatabase(Context context) {
+    public static SQLiteDatabase getWritableDatabase(Context context) {
         DBHelper helper = DBHelper.getInstance(context, "check.db", null, 1);
         return helper.getWritableDatabase();
     }
