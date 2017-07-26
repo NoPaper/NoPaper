@@ -8,7 +8,6 @@ router.route('').post((req, res) => {
 
 router.route('login/teacher').post((req, res) => {
     // DB에 쿼리 날려서 로우 뜨면 성공(고유 키 포함)
-    mysql.query('SELECT id FROM ')
 });
 router.route('login/student').post((req, res) => {
     // DB에 쿼리 날려서 로우있으면 성공
