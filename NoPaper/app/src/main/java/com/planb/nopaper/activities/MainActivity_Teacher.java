@@ -62,7 +62,7 @@ class Adapter_Teacher extends RecyclerView.Adapter<Adapter_Teacher.ViewHolder> {
     public void onBindViewHolder(final Adapter_Teacher.ViewHolder holder, int position) {
         String id = idList[position];
 
-        aq.ajax("http://52.79.134.200/item?id=" + id, String.class, new AjaxCallback<String>() {
+        aq.ajax("http://52.79.134.200:3434/item?id=" + id, String.class, new AjaxCallback<String>() {
             @Override
             public void callback(String url, String response, AjaxStatus status) {
                 try {
@@ -74,7 +74,7 @@ class Adapter_Teacher extends RecyclerView.Adapter<Adapter_Teacher.ViewHolder> {
 
                 }
             }
-        });
+        }.method(AQuery.METHOD_GET));
     }
 
     @Override
