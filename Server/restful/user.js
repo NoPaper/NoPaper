@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('./support/mysql.js');
+const mysql = require('../support/mysql.js');
 
 router.route('').post((req, res) => {
     
@@ -70,7 +70,7 @@ router.route('signup/student').post((req, res) => {
     const classs = req.body.class
 
     mysql.query(`SELECT ${id} FROM account_student`, (err, rows) => {
-        if(rows.lenth ! =0) {
+        if(rows.length != 0) {
             res.sendStatus(204)
         } else {
             mysql.query(`INSERT INTO account_teacher VALUES(${id}, ${password}, ${grade}, ${classs})`, (err, rows) => {

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/', require('./restful/sample.js'));
+app.use('/', require('./restful/user.js'));
 
 app.listen(3003, () => {
     console.log('Server is listening on 3003');
