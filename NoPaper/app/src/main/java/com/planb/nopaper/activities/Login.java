@@ -1,6 +1,7 @@
 package com.planb.nopaper.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -15,6 +16,7 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.planb.nopaper.R;
 import com.planb.nopaper.activities.base.BaseActivity;
+import com.planb.nopaper.support.account.AccountManager;
 import com.planb.nopaper.support.android_view.SnackbarManager;
 
 import java.util.HashMap;
@@ -51,7 +53,6 @@ public class Login extends BaseActivity {
                 } else {
                     ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
                     NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-                    System.out.println(activeNetwork);
 
                     HashMap<String, String> params = new HashMap<String, String>();
                     params.put("id", id.getText().toString());
@@ -60,21 +61,33 @@ public class Login extends BaseActivity {
                     aq.ajax("http://52.79.134.200:3434/login", params, String.class, new AjaxCallback<String>() {
                         @Override
                         public void callback(String url, String response, AjaxStatus status) {
-                            System.out.println(status.getCode());
-                            if(status.getCode() == 201) {
+                            SweetAlertDialog successDialog = new SweetAlertDialog(Login.this, SweetAlertDialog.SUCCESS_TYPE)
+                                    .setTitleText("로그인 성공");
+                            successDialog.getProgressHelper().setBarColor(Color.parseColor("#0b8c2b"));
+
+
+                            if(status.getCode() == 200) {
                                 // 학생
-                                SweetAlertDialog dialog = new SweetAlertDialog(Login.this, SweetAlertDialog.SUCCESS_TYPE)
-                                        .setTitleText("로그인 성공")
-                                        .setContentText("환영합니다, " + response + "님!");
-                                dialog.getProgressHelper().setBarColor(Color.parseColor("#0b8c2b"));
-                                dialog.show();
-                            } else if(status.getCode() == 200) {
+                                successDialog.setContentText("환영합니다, " + response + "님!");
+                                successDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        startActivity(new Intent(getApplicationContext(), MainActivity_Student.class));
+                                    }
+                                });
+                                successDialog.show();
+                                AccountManager.setId(getApplicationContext(), id.getText().toString());
+                            } else if(status.getCode() == 201) {
                                 // 선생님
-                                SweetAlertDialog dialog = new SweetAlertDialog(Login.this, SweetAlertDialog.SUCCESS_TYPE)
-                                        .setTitleText("로그인 성공")
-                                        .setContentText("안녕하세요, 선생님!");
-                                dialog.getProgressHelper().setBarColor(Color.parseColor("#0b8c2b"));
-                                dialog.show();
+                                successDialog.setContentText("안녕하세요, 선생님!");
+                                successDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        startActivity(new Intent(getApplicationContext(), MainActivity_Teacher.class));
+                                    }
+                                });
+                                successDialog.show();
+                                AccountManager.setId(getApplicationContext(), id.getText().toString());
                             } else {
                                 SweetAlertDialog dialog = new SweetAlertDialog(Login.this, SweetAlertDialog.WARNING_TYPE)
                                         .setTitleText("로그인 실패")
@@ -84,6 +97,13 @@ public class Login extends BaseActivity {
                         }
                     });
                 }
+            }
+        });
+
+        jumpToSignupView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SignupGuide.class));
             }
         });
     }

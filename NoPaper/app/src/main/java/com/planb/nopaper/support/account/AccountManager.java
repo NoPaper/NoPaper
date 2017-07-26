@@ -32,7 +32,17 @@ public class AccountManager {
         return cursor.getString(0);
     }
 
+    public static void setId(Context context, String id) {
+        SQLiteDatabase db = getWritableDatabase(context);
+
+        SQLiteStatement stmt = db.compileStatement("UPDATE `checker` SET id=?");
+        stmt.bindString(1, id);
+        System.out.println(stmt.executeUpdateDelete());
+    }
+
     public static boolean isLogined(Context context) {
+        System.out.println(getId(context));
+
         if(getId(context) != null) {
             // Is not null : Is logined
             return true;
@@ -57,7 +67,7 @@ public class AccountManager {
     public static void addWishList(Context context, String id) {
         SQLiteDatabase db = getWritableDatabase(context);
         SQLiteStatement stmt = db.compileStatement("INSERT INTO `wish_list` VALUES(?)");
-        stmt.bindString(0, id);
+        stmt.bindString(1, id);
         stmt.executeInsert();
     }
 

@@ -20,6 +20,7 @@
             android:text="LOG-IN"
             android:textColor="#868686"
             sl:scale_top="400"
+            sl:scale_height="200"
             sl:scale_width="1000" />
 
         <EditText
@@ -69,7 +70,7 @@
             android:textColor="#969696"
             sl:scale_height="70"
             sl:scale_textsize="34"
-            sl:scale_top="1150"
-            sl:scale_width="400" />
+            sl:scale_top="1170"
+            sl:scale_width="600" />
     </com.ssomai.android.scalablelayout.ScalableLayout>
 </LinearLayout>
