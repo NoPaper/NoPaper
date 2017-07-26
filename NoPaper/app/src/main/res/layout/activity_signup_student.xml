@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:sl="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -32,4 +32,81 @@
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/teacher"/>
+    </RelativeLayout>
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        sl:scale_base_height="1000"
+        sl:scale_base_width="1100">
+        <EditText
+            android:id="@+id/id"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_square"
+            android:hint="ID"
+            android:gravity="center"
+            sl:scale_textsize="36"
+            sl:scale_width="700"
+            sl:scale_top="100"/>
+
+        <EditText
+            android:id="@+id/pw"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_square"
+            android:gravity="center"
+            android:hint="PASSWORD"
+            android:inputType="textPassword"
+            sl:scale_textsize="36"
+            sl:scale_top="250"
+            sl:scale_width="700" />
+
+        <EditText
+            android:id="@+id/number"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_square"
+            android:hint="SECRET KEY"
+            android:gravity="center"
+            sl:scale_textsize="36"
+            sl:scale_width="700"
+            sl:scale_top="400" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/selector_square"
+            android:hint="NAME"
+            android:gravity="center"
+            sl:scale_textsize="36"
+            sl:scale_width="700"
+            sl:scale_top="550" />
+
+        <Button
+            android:id="@+id/signupBtn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:text="회원가입"
+            sl:scale_textsize="45"
+            sl:scale_height="130"
+            sl:scale_width="700"
+            sl:scale_top="700"/>
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
 </LinearLayout>
