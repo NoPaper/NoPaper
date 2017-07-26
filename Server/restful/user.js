@@ -12,20 +12,20 @@ router.route('/login/teacher').post((req, res) => {
     const password = req.body.password;
 
     mysql.query(`SELECT * FROM account_teacher WHERE id='${id}' AND password='${password}'`, (err, rows) => {
-        if(rows.length != 0) {
+        if (rows.length != 0) {
             res.sendStatus(200);
         } else {
             res.sendStatus(204);
         }
     });
 });
-router.route('login/student').post((req, res) => {
+router.route('/login/student').post((req, res) => {
     // DB에 쿼리 날려서 로우있으면 성공
     const id = req.body.id;
     const password = req.body.password;
 
     mysql.query(`SELECT * FROM account_stduent WHERE id='${id}' AND password='${password}'`, (err, rows) => {
-        if(rows.length != 0) {
+        if (rows.length != 0) {
             res.sendStatus(200);
         } else {
             res.sendStatus(204);
@@ -33,29 +33,33 @@ router.route('login/student').post((req, res) => {
     });
 });
 
-router.route('signup/teacher').post((req, res) => {
+router.route('/signup/teacher').post((req, res) => {
     // DB에 쿼리 날려서 로우가 없다면 성공
-    const id = req.body.id
-    const password = req.body.password
-    const key = req.body.key
+    const id = req.body.id;
+    const password = req.body.password;
+    const key = req.body.key;
 
-    mysql.query(`SELECT ${id} FROM account_teacher`, (err, rows) => {
-       if(rows.length != 0) {
-           res.sendStatus(204)
-       } else {
-           mysql.query(`INSERT INTO account_teacher VLAUES(${id}, ${password}, ${key})`, (err, rows) => {
-               if(err) {
-                   console.log(err);
-                   res.sendStatus(204)
-               } else {
-                   console.log('DB에 정보들이 성공적으로 저장되었습니다');
-                   res.sendStatus(200)
-               }
-           });
-       }
+    mysql.query(`SELECT * FROM teacher_secret WHERE key='${key}'`, (err, rows) => {
+        if (rows.length != 0) {
+            res.sendStatus(203);
+        } else {
+            mysql.query(`SELECT * FROM account_teacher WHERE id='${id}'`, (err, rows) => {
+                if (rows.length != 0) {
+                    res.sendStatus(204);
+                } else {
+                    mysql.query(`INSERT INTO account_teacher VALUES('${id}', '${password}', '${key}')`, (err, rows) => {
+                        if (err) {
+                            res.sendStatus(204);
+                        } else {
+                            res.sendStatus(200);
+                        }
+                    });
+                }
+            });
+        }
     });
 });
-router.route('signup/student').post((req, res) => {
+router.route('/signup/student').post((req, res) => {
     // DB에 쿼리 날려서 로우가 없다면
     const id = req.body.id
     const password = req.body.password
@@ -63,11 +67,11 @@ router.route('signup/student').post((req, res) => {
     const classs = req.body.class
 
     mysql.query(`SELECT ${id} FROM account_student`, (err, rows) => {
-        if(rows.length != 0) {
+        if (rows.length != 0) {
             res.sendStatus(204)
         } else {
             mysql.query(`INSERT INTO account_teacher VALUES(${id}, ${password}, ${grade}, ${classs})`, (err, rows) => {
-                if(err) {
+                if (err) {
                     console.log(err);
                     res.sendStatus(204)
                 } else {
