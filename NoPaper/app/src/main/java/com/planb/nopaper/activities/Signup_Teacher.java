@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
@@ -22,6 +23,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  */
 
 public class Signup_Teacher extends BaseActivity {
+    private ImageButton backBtn;
     private EditText id;
     private EditText pw;
     private EditText secret;
@@ -33,11 +35,19 @@ public class Signup_Teacher extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_teacher);
 
+        backBtn = (ImageButton) findViewById(R.id.backBtn);
         id = (EditText) findViewById(R.id.id);
         pw = (EditText) findViewById(R.id.pw);
         secret = (EditText) findViewById(R.id.secret);
         signupBtn = (Button) findViewById(R.id.signupBtn);
         aq = new AQuery(getApplicationContext());
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SignupGuide.class));
+            }
+        });
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
