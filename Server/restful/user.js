@@ -26,7 +26,7 @@ router.route('/login/student').post((req, res) => {
 
     mysql.query(`SELECT * FROM account_student WHERE id='${id}' AND password='${password}'`, (err, rows) => {
         if (rows.length != 0) {
-            res.sendStatus(200);
+            res.sendStatus(201);
         } else {
             res.sendStatus(204);
         }
@@ -47,11 +47,11 @@ router.route('/signup/teacher').post((req, res) => {
                 if (rows.length != 0) {
                     res.sendStatus(204);
                 } else {
-                    mysql.query(`INSERT INTO account_teacher VALUES('${id}', '${password}', '${key}')`, (err, rows) => {
+                    mysql.query(`INSERT INTO account_teacher VALUES('${id}', '${password}')`, (err, rows) => {
                         if (err) {
                             res.sendStatus(204);
                         } else {
-                            res.sendStatus(200);
+                            res.sendStatus(201);
                         }
                     });
                 }
