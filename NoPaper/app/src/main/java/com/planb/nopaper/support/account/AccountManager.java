@@ -37,12 +37,9 @@ public class AccountManager {
 
         SQLiteStatement stmt = db.compileStatement("UPDATE `checker` SET id=?");
         stmt.bindString(1, id);
-        System.out.println(stmt.executeUpdateDelete());
     }
 
     public static boolean isLogined(Context context) {
-        System.out.println(getId(context));
-
         if(getId(context) != null) {
             // Is not null : Is logined
             return true;

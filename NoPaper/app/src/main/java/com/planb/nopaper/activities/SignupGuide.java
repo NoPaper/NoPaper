@@ -1,6 +1,8 @@
 package com.planb.nopaper.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 
 import com.planb.nopaper.R;
@@ -19,5 +21,16 @@ public class SignupGuide extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_guide);
+
+        backBtn = (ImageButton) findViewById(R.id.backBtn);
+        studentBtn = (ImageButton) findViewById(R.id.studentBtn);
+        teacherBtn = (ImageButton) findViewById(R.id.teacherBtn);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Login.class));
+            }
+        });
     }
 }
