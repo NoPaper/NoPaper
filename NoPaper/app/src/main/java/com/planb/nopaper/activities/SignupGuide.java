@@ -32,5 +32,19 @@ public class SignupGuide extends BaseActivity {
                 startActivity(new Intent(getApplicationContext(), Login.class));
             }
         });
+
+        studentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Signup_Student.class));
+            }
+        });
+
+        teacherBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Signup_Teacher.class));
+            }
+        });
     }
 }

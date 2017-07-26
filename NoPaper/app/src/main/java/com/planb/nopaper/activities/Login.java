@@ -69,7 +69,7 @@ public class Login extends BaseActivity {
                             if(status.getCode() == 200) {
                                 // 학생
                                 successDialog.setContentText("환영합니다, " + response + "님!");
-                                successDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                successDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                                         startActivity(new Intent(getApplicationContext(), MainActivity_Student.class));
@@ -80,10 +80,10 @@ public class Login extends BaseActivity {
                             } else if(status.getCode() == 201) {
                                 // 선생님
                                 successDialog.setContentText("안녕하세요, 선생님!");
-                                successDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                successDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                        startActivity(new Intent(getApplicationContext(), MainActivity_Teacher.class));
+                                        startActivity(new Intent(getApplicationContext(), MainActivity_Student.class));
                                     }
                                 });
                                 successDialog.show();
