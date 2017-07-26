@@ -37,9 +37,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO `checker` VALUES(null)");
         // 초기값은 null
 
-        db.execSQL("CREATE TABLE `wish_list` VALUES(id TEXT)");
+        db.execSQL("CREATE TABLE `wish_list`(id TEXT)");
 
-        db.execSQL("CREATE TABLE `recent_file` VALUES(id TEXT)");
+        db.execSQL("CREATE TABLE `recent_file`(id TEXT)");
     }
 
     @Override
