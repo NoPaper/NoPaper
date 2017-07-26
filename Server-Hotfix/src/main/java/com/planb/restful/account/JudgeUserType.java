@@ -17,7 +17,7 @@ public class JudgeUserType implements Handler<RoutingContext> {
 		String id = ctx.request().getFormAttribute("id");
 		// 이 URI에 접근하는 모든 클라이언트는 로그인된 상태라고 판단
 		
-		ResultSet rs = MySQL.executeQuery("SELECT * FROM account_student WHERE id=? AND pw=?", id);
+		ResultSet rs = MySQL.executeQuery("SELECT * FROM account_student WHERE id=?", id);
 		try {
 			if(rs.next()) {
 				ctx.response().setStatusCode(201);
