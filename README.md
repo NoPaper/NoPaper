@@ -16,6 +16,8 @@ Designer : 광주SW마이스터고등학교 1학년 신소휘
 Researcher : 대구SW고등학교 2학년 손제욱
 
 ## Developers
+대구SW고등학교 2학년 손제욱 : Embedded
+
 대덕SW마이스터고등학교 2학년 조민규 : GUI App, Android App, DataBase
 
 대덕SW마이스터고등학교 2학년 조치원 : API Server
