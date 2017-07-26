@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.planb.nopaper.R;
+import com.planb.nopaper.activities.Login;
 import com.planb.nopaper.activities.MainActivity;
 import com.planb.nopaper.activities.base.BaseActivity;
 import com.planb.nopaper.support.account.AccountManager;
@@ -24,12 +25,14 @@ public class Splash extends BaseActivity {
             public void run() {
                 judge();
             }
-        }, 2000);
+        }, 2250);
     }
 
     private void judge() {
         if(AccountManager.isLogined(getApplicationContext())) {
             startActivity(new Intent(this, MainActivity.class));
+        } else {
+            startActivity(new Intent(this, Login.class));
         }
     }
 }
