@@ -1,5 +1,8 @@
-const uuid = require('node-uuid')
 const express = require('express');
-const multer = require('multer');
+const uuid = require('node-uuid');
+const router = express.Router();
+const upload = require('../app.js');
 
-const diskStorage = 
+router.route('/uploadfile').post((req, res) => {
+    req.file.uuid = uuid.v4();
+});
