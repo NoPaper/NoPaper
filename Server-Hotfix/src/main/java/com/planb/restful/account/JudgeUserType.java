@@ -20,7 +20,8 @@ public class JudgeUserType implements Handler<RoutingContext> {
 		ResultSet rs = MySQL.executeQuery("SELECT * FROM account_student WHERE id=? AND pw=?", id);
 		try {
 			if(rs.next()) {
-				ctx.response().setStatusCode(201).end();
+				ctx.response().setStatusCode(201);
+				ctx.response().end();
 				// 학생일 때 201
 				ctx.response().close();
 			} else {

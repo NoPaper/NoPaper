@@ -14,6 +14,8 @@ import io.vertx.ext.web.RoutingContext;
 public class Login implements Handler<RoutingContext> {
 	@Override
 	public void handle(RoutingContext ctx) {
+		System.out.println("Hello");
+		
 		String id = ctx.request().getFormAttribute("id");
 		String pw = ctx.request().getFormAttribute("pw");
 		
@@ -21,7 +23,8 @@ public class Login implements Handler<RoutingContext> {
 		rs = MySQL.executeQuery("SELECT * FROM account_student WHERE id=? AND pw=?", id, pw);
 		try {
 			if(rs.next()) {
-				ctx.response().setStatusCode(200).end();
+				ctx.response().setStatusCode(200);
+				ctx.response().end(rs.getString("name"));
 				ctx.response().close();
 			} else {
 				rs = MySQL.executeQuery("SELECT * FROM account_teacher WHERE id=? AND pw=?", id, pw);
