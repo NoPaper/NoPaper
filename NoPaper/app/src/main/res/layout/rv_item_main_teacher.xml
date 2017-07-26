@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="92dp">
+
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@drawable/ic_file"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="10dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp">
+        <TextView
+            android:id="@+id/titleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First exam"
+            android:textSize="20sp"
+            android:textColor="#3a4af4"/>
+        <TextView
+            android:id="@+id/fileNameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titleView"
+            android:layout_marginTop="3dp"
+            android:text="hellohello.docx"
+            android:textColor="#11b221"
+            android:textSize="14sp"/>
+        <TextView
+            android:id="@+id/dateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="2017-07-27 16:34"
+            android:textSize="14sp"/>
+    </RelativeLayout>
+
+</LinearLayout>
