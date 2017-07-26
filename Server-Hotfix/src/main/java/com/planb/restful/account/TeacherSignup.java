@@ -24,6 +24,7 @@ public class TeacherSignup implements Handler<RoutingContext> {
 			if(!rs.next()) {
 				ctx.response().setStatusCode(100).end();
 				ctx.response().close();
+				return;
 			}
 
 			rs = MySQL.executeQuery("SELECT * FROM account_teacher WHERE id=?", id);
