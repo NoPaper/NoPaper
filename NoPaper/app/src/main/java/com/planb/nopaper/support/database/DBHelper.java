@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
+
+import com.planb.nopaper.support.account.AccountManager;
 
 /**
  * Created by dsm2016 on 2017-07-26.
@@ -40,6 +43,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE `wish_list`(id TEXT)");
 
         db.execSQL("CREATE TABLE `recent_file`(id TEXT)");
+
+        db.execSQL("INSERT INTO `wish_list` VALUES('test_path1')");
+        db.execSQL("INSERT INTO `wish_list` VALUES('test_path2')");
+        db.execSQL("INSERT INTO `wish_list` VALUES('test_path3')");
     }
 
     @Override

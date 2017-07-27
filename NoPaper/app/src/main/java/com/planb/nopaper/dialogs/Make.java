@@ -1,5 +1,6 @@
 package com.planb.nopaper.dialogs;
 
+import android.accounts.Account;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -49,7 +50,7 @@ public class Make extends Dialog {
         fileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AccountManager.setId(context, null);
+                AccountManager.logout(context);
                 context.startActivity(new Intent(context, Login.class));
             }
         });
@@ -57,7 +58,7 @@ public class Make extends Dialog {
         imageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AccountManager.setId(context, null);
+                AccountManager.logout(context);
                 context.startActivity(new Intent(context, Login.class));
             }
         });

@@ -38,6 +38,8 @@ public class MainActivity_Teacher extends BaseActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         fab = (ImageView) findViewById(R.id.fab);
 
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +84,7 @@ class Adapter_Teacher extends RecyclerView.Adapter<Adapter_Teacher.ViewHolder> {
             @Override
             public void callback(String url, String response, AjaxStatus status) {
                 try {
+                    System.out.println(response);
                     JSONObject obj = new JSONObject(response);
                     holder.titleView.setText(obj.getString("title"));
                     holder.fileNameView.setText(obj.getString("file_name"));

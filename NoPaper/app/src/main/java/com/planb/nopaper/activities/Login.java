@@ -85,7 +85,7 @@ public class Login extends BaseActivity {
                                     @Override
                                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                                         sweetAlertDialog.dismissWithAnimation();
-                                        startActivity(new Intent(getApplicationContext(), MainActivity_Student.class));
+                                        startActivity(new Intent(getApplicationContext(), MainActivity_Teacher.class));
                                     }
                                 });
                                 successDialog.show();

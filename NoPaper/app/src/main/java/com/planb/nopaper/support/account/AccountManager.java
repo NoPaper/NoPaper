@@ -40,6 +40,13 @@ public class AccountManager {
         stmt.executeUpdateDelete();
     }
 
+    public static void logout(Context context) {
+        SQLiteDatabase db = getWritableDatabase(context);
+
+        db.execSQL("UPDATE `checker` SET id=null");
+    }
+
+
     public static boolean isLogined(Context context) {
         if(getId(context) != null) {
             // Is not null : Is logined
