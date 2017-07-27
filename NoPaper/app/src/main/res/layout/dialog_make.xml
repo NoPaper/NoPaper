@@ -21,22 +21,36 @@
         android:textSize="14sp"
         android:gravity="center"/>
 
-    <ImageButton
-        android:id="@+id/fileBtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:layout_below="@id/title"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_file"
-        android:scaleType="centerInside"
-        android:background="@android:color/transparent"/>
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/fileBtn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_file"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:id="@+id/imageBtn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_image"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/fileSelectGuideView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fileBtn"
+        android:layout_below="@id/linear"
         android:layout_centerHorizontal="true"
         android:text="전송할 파일을 선택해 주세요"/>
 
@@ -47,7 +61,7 @@
         android:background="@drawable/selector_square"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/fileSelectGuideView"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:hint="파일 수신자를 정해 주세요(1-1 등)"
         android:textSize="14sp"
         android:gravity="center"/>

@@ -35,10 +35,6 @@ public class MainActivity_Teacher extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_teacher);
 
-//        AccountManager.addWishList(getApplicationContext(), "path1");
-//        AccountManager.addWishList(getApplicationContext(), "path2");
-//        AccountManager.addWishList(getApplicationContext(), "path3");
-
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         fab = (ImageView) findViewById(R.id.fab);
 
