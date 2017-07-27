@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.planb.nopaper.R;
+import com.planb.nopaper.activities.Login;
+import com.planb.nopaper.support.account.AccountManager;
 
 /**
  * Created by dsm2016 on 2017-07-27.
@@ -47,14 +49,16 @@ public class Make extends Dialog {
         fileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                AccountManager.setId(context, null);
+                context.startActivity(new Intent(context, Login.class));
             }
         });
 
         imageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                AccountManager.setId(context, null);
+                context.startActivity(new Intent(context, Login.class));
             }
         });
 
