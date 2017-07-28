@@ -37,7 +37,15 @@ public class AccountManager {
 
         SQLiteStatement stmt = db.compileStatement("UPDATE `checker` SET id=?");
         stmt.bindString(1, id);
+        stmt.executeUpdateDelete();
     }
+
+    public static void logout(Context context) {
+        SQLiteDatabase db = getWritableDatabase(context);
+
+        db.execSQL("UPDATE `checker` SET id=null");
+    }
+
 
     public static boolean isLogined(Context context) {
         if(getId(context) != null) {
@@ -54,7 +62,7 @@ public class AccountManager {
         Cursor cursor = db.rawQuery("SELECT * FROM `wish_list`", null);
         String[] wishList = new String[cursor.getCount()];
         for(int i = 0; i < cursor.getCount(); i++) {
-            cursor.move(i);
+            cursor.moveToNext();
             wishList[i] = cursor.getString(0);
         }
 
@@ -74,7 +82,7 @@ public class AccountManager {
         Cursor cursor = db.rawQuery("SELECT * FROM `recent_file`", null);
         String[] wishList = new String[cursor.getCount()];
         for(int i = 0; i < cursor.getCount(); i++) {
-            cursor.move(i);
+            cursor.moveToNext();
             wishList[i] = cursor.getString(0);
         }
 
